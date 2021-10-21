@@ -22,8 +22,15 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $gender = $this->faker->randomElement(['male', 'female']);
+
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->unique()->userName(),
+            'first_name' => $this->faker->firstName($gender),
+            'last_name' => $this->faker->lastName($gender),
+            'gender' => $gender,
+            'date_of_birth' => $this->faker->date('Y-m-d', '-18 years'),
+            'contact_number' => $this->faker->unique()->numberBetween(80000000, 99999999), //Singapore mobile number
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
