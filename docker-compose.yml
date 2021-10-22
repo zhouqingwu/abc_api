@@ -17,6 +17,7 @@ services:
             LARAVEL_SAIL: 1
             XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
+            TZ: 'Asia/Singapore'
         volumes:
             - '.:/var/www/html'
         networks:
@@ -29,6 +30,7 @@ services:
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
+            TZ: 'Asia/Singapore'
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
             MYSQL_DATABASE: '${DB_DATABASE}'
             MYSQL_USER: '${DB_USERNAME}'
@@ -46,6 +48,8 @@ services:
         image: 'redis:alpine'
         ports:
             - '${FORWARD_REDIS_PORT:-6379}:6379'
+        environment:
+            TZ: 'Asia/Singapore'
         volumes:
             - 'sailredis:/data'
         networks:
