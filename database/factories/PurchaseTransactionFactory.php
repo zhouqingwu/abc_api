@@ -23,10 +23,12 @@ class PurchaseTransactionFactory extends Factory
     public function definition()
     {
         $total_saving = $this->faker->randomFloat(2, 1, 100);
+
         return [
-            'user_id' => User::inRandomOrder()->first()->id,
-            'total_spent' => $total_saving / $this->faker->randomFloat(2, 0.01, 0.2),
+            'user_id' => random_int(1, 5000), // User::select('id')->inRandomOrder()->first()->id,
+            'total_spent' => $total_saving * 80,
             'total_saving' => $total_saving,
+            'transaction_at' => $this->faker->dateTimeBetween(startDate:'-2 months', endDate:'now', timezone:'Asia/Singapore'),
         ];
     }
 }

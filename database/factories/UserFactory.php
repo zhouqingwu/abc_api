@@ -30,8 +30,8 @@ class UserFactory extends Factory
             'last_name' => $this->faker->lastName($gender),
             'gender' => $gender,
             'date_of_birth' => $this->faker->date('Y-m-d', '-18 years'),
-            'contact_number' => $this->faker->unique()->numberBetween(80000000, 99999999), //Singapore mobile number
-            'email' => $this->faker->unique()->safeEmail(),
+            'contact_number' => $this->faker->unique()->numberBetween(80000000, 199999999999), //Singapore mobile number
+            'email' => time().$this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),

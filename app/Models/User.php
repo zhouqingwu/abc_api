@@ -53,7 +53,7 @@ class User extends Authenticatable
      *
      * @return HasMany
      */
-    public function purchase_transactions(): HasMany
+    public function purchaseTransactions(): HasMany
     {
         return $this->hasMany(PurchaseTransaction::class);
     }
