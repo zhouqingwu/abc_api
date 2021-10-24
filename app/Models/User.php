@@ -61,6 +61,17 @@ class User extends Authenticatable
     }
 
     /**
+     * User Voucher Pivot
+     */
+    public function vouchers()
+    {
+        return $this->belongsToMany(Voucher::class, 'user_voucher', 'user_id', 'voucher_id')
+            ->withPivot(['voucher_batch'])
+            ->withTimestamps()
+            ->as('user_voucher');
+    }
+
+    /**
      * Check Customer if is elgible to particpate
      * Complete 3 purchase transactions with in the last 30 days
      * Total transactions equal or more than $100

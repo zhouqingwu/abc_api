@@ -16,7 +16,7 @@ class CreateVouchersTable extends Migration
         Schema::create('vouchers', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->integer('batch');
+            $table->integer('batch')->index();
             $table->integer('stock')->default(1);
             $table->unsignedDecimal('amount', 8, 2)->default(0);
             $table->char('code', 20)->unique()->comment('cash voucher code');
